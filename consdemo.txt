@@ -1,0 +1,55 @@
+Select * From Batchbai;
+drop table batchbdemo;
+
+Create Table Batchbdemo(Eid Number Primary Key,Ename Varchar2(20),Eage Number); // Column Level Constraint
+Create Table Batchbdemo(Eid Number primary key,Ename Varchar2(20),eage number,constraint validage_ck check(eage >=18)); 
+
+
+Desc Batchbdemo;
+Insert Into Batchbdemo Values(101,'Muskan',18);
+Insert Into Batchbdemo Values(101,'Sagar',18);
+
+// Composite uses table level constrainys
+Create Table Batchbdemo(Eid Number,Ename Varchar2(20),eage number,primary key(eid,ename)); 
+
+
+Create Table Batchbdemo(Eid Number,Ename Varchar2(20),eage number); 
+
+Alter Table Batchbdemo Add Primary Key(Eid);
+
+
+
+//
+
+Select * From User_Constraints Where Table_Name='BATCHBDEMO';
+ Constraint Name
+ Constarint
+
+Alter Table Batchbdemo Drop  Constraint Validage_Ck;
+Alter Table Batchbdemo Drop  Constraint Sys_C0021006;
+
+
+alter 
+
+
+// Foriegn key creation
+
+
+Tablea
+Create Table TableA(Eid Number,Ename Varchar2(20),Eage Number,Primary Key(Eid)); 
+
+TableB
+
+Create Table TableB(Eno Number references TableA(eid),Address Varchar2(20),salary number); 
+
+Desc Tablea;
+
+Desc TableB;
+
+Insert  Into Tablea Values(101,'aaa',23);
+
+Insert into tableb values(201,'blore',9999);
+
+
+
+
