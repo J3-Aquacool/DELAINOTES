@@ -1,0 +1,95 @@
+Arithmetic Operators: +,-,*,/,%
+
+1. View Employee Salary With 1000 Rs Increment 
+
+select id,name,salary,salary+1000 "Incremented Salary" from employee;
+
+
+2. View Employee Salary With 500 Rs Decrement 
+Select Id,Name,Salary,Salary-500 "Decremented Salary" From Employee;
+
+
+3.View Employee Salary With  4 Times Increment The Current Salary
+Select Id,Name,Salary,Salary*4  "Bulk IncrementSalary" From Employee;
+4..View Employee Salary With  1/2 Times The Current Salary
+
+Select Id,Name,Salary,Salary/2  "Partial Salary" From Employee;
+
+
+Assignment Operators:=
+
+1. Update the salary of the employee by 1500 rs
+
+Update Employee Set Salary=Salary+1500;
+
+Select * From Employee;
+
+
+Relational Operators: <,<=,>=,!=,<>
+
+1. View Only Male Employee Details
+select * from employee where gender='Male';
+
+
+2. View All Employee Details Whose Salary Is Above 40000
+Select * From Employee Where  salary >=40000;
+
+3. View Only  Employee Details Whose Gender Is Not Male
+Select * From Employee Where Gender!='Male';
+
+Select * From Employee Where Gender <>'Male';
+
+Logical And,Or Not :
+
+And: Botth The Expression/Condition Should Be True
+1. view details of employees whose age=28 and dept=it
+
+select * from employee where age=28 and department='IT';
+
+
+
+
+Or:any  of The Expression/Condition Should Be True
+
+
+Select * From Employee Where Age=28 Or Department='IT';
+
+Not
+ Select * From Employee Where Age=28 and not  Department='IT';
+ 
+ 
+ IN Operator
+ 
+ Select * From Employee;
+ Select * From Employee Where City='Delhi' Or City='Mumbai';
+ select * from employee where(City='Delhi' or City='Mumbai');
+ select * from employee where city in('Delhi','Mumbai');
+ 
+ 
+ 
+ Using Not With In
+ select * from employee where city not in('Delhi','Mumbai');
+ 
+ 
+ Between
+  Select * From Employee Where Age Between 26 And 28;
+  
+   Select * From Employee Where Age >=26 And Age <=28;
+   
+
+
+Like :
+Pattern Matching
+it uses 2 wildcard symbols to fetch the data has per the pattern
+
+%: Any No Of Charcater (Ie 0 Or More) In The Expression
+_: single charcter in the express
+
+select * from employee where name like 'J%';
+
+select * from employee where name like '%es';
+
+select * from employee where name not like '%es%';
+
+
+Select * From Employee Where City Like 'Mumb__';
