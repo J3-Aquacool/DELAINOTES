@@ -1,0 +1,26 @@
+CREATE TABLE Employee (
+  EmployeeId INT PRIMARY KEY,
+  FullName VARCHAR(20),
+  Department VARCHAR(10),
+  Salary INT,
+  Gender VARCHAR(10),
+  Age INT
+);
+
+CREATE TABLE Projects (
+    ProjectId INT PRIMARY KEY,
+    ProjectName VARCHAR(50),
+    EmployeeId INT
+);
+
+CREATE TABLE Address
+(
+    AddressId INT PRIMARY KEY,
+    EmployeeId INT,
+    Country VARCHAR(10),
+    State VARCHAR(20),
+    City VARCHAR(10)
+);
+
+
+Our requirement is to retrieve the EmployeeId, FullName, Department, Gender, ProjectName from the Employee and Projects tables.
