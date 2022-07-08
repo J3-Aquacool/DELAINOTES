@@ -1,0 +1,218 @@
+
+select * from ems;
+ Q1. display maximum salary from ems table;
+    
+    select max(salary) from ems;
+    
+   Q1. display name of the employe who draws maximum salary 
+   
+       
+    select ename,max(salary) from ems;
+    
+   select ename,salary from ems where salary=( select max(salary) from ems)
+    
+    
+ q3. display all the deptnames alogn with no of emps working in that dept
+ 
+ Select Dept,Count(dept) From Ems Group By Dept;
+ 
+ Q4. Display All Deptnames Wher No Of Emp Are Less Then 2;
+ 
+    Select Dept  From Ems Group By Dept Having Count(Dept) <2;
+    
+ Q5. Display All The Names Of Those Employess Who Work In Dept <2;
+ 
+ 
+ select ename ,dept from ems where dept in( Select Dept  From Ems Group By Dept Having Count(Dept) <2);
+    
+    q6. display highest salary department wise and also name of employeess who is taking highest salary
+ 
+     select dept,max(salary) from ems group by dept;
+     
+     
+       select ename,dept,salary from ems where salary in( select max(salary) from ems group by dept);
+       
+       // Assumption
+       
+       Employee
+       Eid(Pk) Ename Address
+       101                  Blore
+       102                 Hyd
+       103                Blore
+       104               delhi
+       
+       
+       Project
+       Eid(Fk) Pid(Pk) Projectname  Location
+       103    121      Iot                   Blore
+       102     122   MquickApp       delhi
+       
+       
+     1. Find Name Of The Employee Who Are Working On Some Project
+     103
+     102
+     
+     
+     select * from emppms;
+     
+     
+     Create Table Emppms (Eid Number Primary Key, Ename Varchar(20), Address Varchar(20));
+     Insert Into Emppms Values(101,'Ankur','Blore');
+     Insert Into Emppms Values(102,'Ashok','Hyd');
+     Insert Into Emppms Values(103,'Priya','Cheenai');
+     Insert Into Emppms Values(104,'Aditya','Delhi');
+     
+    Create Table Pms (Pid Number Primary Key  ,Projectname Varchar(20),Location  Varchar(20),Eid Number References Emppms(Eid));
+    
+    
+     Insert Into pms Values(121,'Gaming IOT','Blore',101);
+     
+     Insert Into Pms Values(161,'Web App','Hyd',103);
+     
+     
+      Create Table Emppms (Eid Number Primary Key, Ename Varchar(20), Address Varchar(20));
+     Insert Into Emppms Values(101,'Ankur','Blore');
+     Insert Into Emppms Values(102,'Ashok','Hyd');
+     Insert Into Emppms Values(103,'Priya','Cheenai');
+     Insert Into Emppms Values(104,'Aditya','Delhi');
+     
+    Create Table Pms (Pid Number Primary Key  ,Projectname Varchar(20),Location  Varchar(20),Eid Number References Emppms(Eid));
+    
+    
+     Insert Into pms Values(121,'Gaming IOT','Blore',101);
+     
+     Insert Into Pms Values(161,'Web App','Hyd',103);
+     
+ // Joins--->    select e.ename from emppms e ,pms p  where e.eid in p.eid;
+     
+  // 
+    
+    
+
+        select * from pms;
+        
+        select ename from emppms where eid in (Select Distinct(Eid) From Pms);
+        
+           Create Table Pmsdept (Did Number Primary Key  ,Deptname Varchar(20),Eid Number References Emppms(Eid));
+                Insert Into Pmsdept Values(161,'HR',103);
+                Insert Into Pmsdept Values(171,'Opertaions',101);
+                Insert Into Pmsdept Values(181,'IT',102);
+          
+              Select * From Emppms;
+          Select * From Pmsdept;
+  
+  
+    PS: require emp detaiks who works in some department
+        
+        Select * From Emppms Where  exists (Select * From Pmsdept  Where Pmsdept.Eid=Emppms.Eid);
+        
+        
+        
+       1 row of outer query table will compare with all the rows in the inner query table
+       
+       
+        Select * From Pmsdept  Where Pmsdept.Eid=Emppms.Eid;
+        
+        Exists----> will return true/false
+101	Ankur	Blore---false,true,false----> true
+102	Ashok	Hyd----->true
+103	Priya	Cheenai--true
+104	Aditya	Delhi---false
+
+if any inner query uses the attribute of outer query table its called has cor-related query
+        
+  PS---> SUBQUERY,CORRELATED,JOINS
+  
+  Crossproduct=  Mrows(Atable) * Nrows(Btable);
+
+   Select * From Emppms;
+   Select * From Pmsdept;
+   // lets connect 2 tables(ie join)
+   
+  
+  PS  : find empnames who is working in department
+    
+    1. Find The Table Which Gives The Output
+    2. frame the query
+    
+   Step1:  Select * From Emppms,Pmsdept;
+   
+   Step2:Select Ename From Emppms,Pmsdept Where Emppms.Eid=Pmsdept.Eid;
+   
+   Step3: Select Ename From Emppms Natural Join Pmsdept;
+      
+      Note: the colum name of the foriegn key in the child table should be the same has the colum name of parent table 
+      
+          Create Table Pmsdept1 (Did Number Primary Key  ,Deptname Varchar(20),Empno Number References Emppms(Eid));
+                Insert Into Pmsdept1 Values(161,'HR',103);
+                Insert Into Pmsdept1 Values(171,'Opertaions',101);
+                Insert Into Pmsdept1 Values(181,'IT',102);
+                
+                
+                select * from pmsdept1;
+                                           
+                Select Ename From Emppms Natural Join Pmsdept1;
+                
+                Select Ename From Emppms,Pmsdept1 Where Emppms.Eid=Pmsdept1.Empno;
+                
+    
+    Inner Join: is simpley called has a join,equi-join 
+    
+    Common in both tables then it will display
+    
+    Emp_Policy
+    Eid Name Dept
+    1   Priya    It
+    2 Ankur   Operations
+    3  Ashok  Sales
+    
+    
+    Policy_Transaction
+    Transid,Empid,Agency Amount
+    101      3,        Direct   10000
+    123    3,          Direct  40000
+    178  10,      Policy Bazar 8000
+   
+   1. No of policies sold by agents working for their organisaztion and also get the policy sold amount with the total
+   
+   Abc Is An Policy Selling Company It Has Employees Who Also Sell Policies
+   ABc also outsources  to other agents of other companies to sell their policiws
+    
+    Select Emp.Eid ,Count(1) From Emppolicy Emp Inner Join    Policy_Transaction P On Emp.Eid=P.Eid Group By Emp.Eid;
+    
+    
+     Select Emp.Eid ,Count(1),sum(p.amount) From Emppolicy Emp Join    Policy_Transaction P On Emp.Eid=P.Eid Group By Emp.Eid;
+     
+     
+     
+     Left-Outer join/Left Join
+     
+     data which is common in both tables and also the data in the left table which is not avaibale will also dispalyed
+     
+     
+     Select Emp.Eid ,Count(1),Sum(P.Amount) From Emppolicy Emp left outer Join    Policy_Transaction P On Emp.Eid=P.Eid Group By Emp.Eid;
+     
+    
+    Self join: A join which is applied to the same table is called has self join
+    
+    
+    
+    
+    Select * From Course;
+    Select * From Study;
+    desc study;
+    
+    insert into study values('C3','S2','2010');
+    
+    Student enrolled for more than 1 course
+    
+    A----->jAVA,UNIX
+    
+    Select st1.ssid From Study St1,Study St2 where st1.ssid=st2.ssid and st1.scid <st2.scid;
+    
+    
+     Select Emp.Eid ,Count(1),Sum(P.Amount) From Emppolicy Emp Right outer Join    Policy_Transaction P On Emp.Eid=P.Eid Group By Emp.Eid;
+  
+       Select Emp.Eid ,Count(1),Sum(P.Amount) From Emppolicy Emp full outer Join    Policy_Transaction P On Emp.Eid=P.Eid Group By Emp.Eid;
+    
+    
