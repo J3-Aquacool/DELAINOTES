@@ -1,0 +1,215 @@
+Agenda
+
+1.Java Fundamentals Programming
+
+What  is Java?
+Java is a Programming Language which uses OOP's Approach.
+
+What makes Java so Popular?
+Simple,Robust,Distributed,Platform Independent/Portable
+
+
+What kind of Application can be ddeveloped Using Java.
+Desktop App,Network,Districbuted app,Web,Mobile,Enterprise,Animation,Gui.
+
+
+What are the Versions
+
+Jdk1.0--->1995
+Jdk1.1--->1997
+Jdk1.2--->1998
+Jdk1.3--->2000
+Jdk1.4--->2002
+Jdk1.5--->2004
+Jdk1.6--->2006
+Jdk1.7--->2011
+Jdk1.8--->2014
+
+
+Why Java8?
+Lambda Expression,Functional Programming,Date&Time,Streams,functional Interfaces
+Less Amout of Code.
+
+
+
+Fundamentals:
+
+1. DataTypes : Primitive Types and Referenced Types(Non-Primitive)
+
+
+Primitive Types: they have fixed size
+int,float,double,long,short,byte,char,boolean
+
+Referenced Types(Non-Primitive)
+String
+Interface
+Abstract class
+Userdefine class
+
+
+2. Operators
+Arithmetic
+Relation Operators
+
+3. Keywords: 60 Keywords
+
+int,float,double,long,short,byte,char,boolean,class,interface,abstarct,extends implements,import,if ,else
+
+
+
+
+4. Control Statements
+
+Conditional Statments
+1. if,if-else,if-else if,switch
+1.1 break,continue
+
+Iteratave Statements
+while,dowhile,for,for-each(from java1.5)
+
+
+
+Syntax of Java
+
+class   Demo
+{
+
+public static void main(String a[])
+{
+
+}
+}
+******************************************
+Syntax of c++
+class   <classname>
+{
+};
+void main()
+{
+
+}
+
+
+
+Where do i write the Java Code?
+Notepad,IDE(Eclipse,Intellij,Netbeans)
+
+
+Rules for Execution of Java Code.
+
+1.Use a editor
+2. Write the code
+3. Save the code with a filename having an extension ".java"
+4. Compile the Code ----> javac filename.java
+5.Execute The Code----> java classnamewhichcontainsmainmethod
+
+
+What are the rules to be followed?
+
+1.In a file you can have any number of classes
+2.In a file you can have any number of classes but only one class should be declared public
+3.We can have classname and filename different if the class is not declared public
+
+
+How do i print and output using Java
+
+In c---->printf
+in c++--->cout
+in Java----> System.out.println
+
+
+Understanding System.out.println?
+
+
+System.out.println();
+
+
+println();----> is a function/method
+out------> is a reference of PrintStream class in java
+System-----> is a class in java
+
+
+Where are these present?
+ALL Libraries in c,c++ are present in header files(stdio.h)---->  # include
+
+ALL Libraries in java are present in packages
+
+Note :All basic libraries are present in java.lang
+
+How to use this packages?
+
+These packages are used by using a keyword  "import"
+
+ex: import  java.lang.*;
+
+Do we need to import this lang package?
+No necessary
+
+
+
+What is the purpose of static.
+
+static is a keyword
+static can be applied to varaible,methods,classes
+static members are independent members of the class
+static members can be accessed anywhere using the classname
+static members are shared across multiple objects in the memory(ie static members will be allocated space in the memory only once)
+
+
+
+
+OOP in Java?
+1. Anything which can developed and implemented in Programming and which has its existance in real world
+
+2. If anything is existing it meaans it will have state and behaviour is called Object
+
+state---> attributes
+behaviour--->functionalty
+
+Ex:
+Watch:
+state: size,colour,price,brandname,shape
+beahiuors:showTime,ringandalarm,
+
+
+Lets say go ahead and develop this programmatically
+
+class Watch
+{
+
+
+int size,
+String colour,
+double price,
+String brandname
+
+void showTime()
+{
+
+}
+
+void ringandalarm()
+{
+}
+
+
+}
+
+
+What is the Use of OOPS?
+1. Encapsulation: hiding important members 
+2.Abstraction: exposing only the required members of a class
+3. Inhertianc: resubality,place and arrange the object in heirarchy 
+5.Polymorphisim: u can make and object play different roles at differnt places
+
+ How is this done?
+Using Access specfiers
+private,public,protected
+
+Encapsulation: private access
+Abstraction:public
+
+
+
+
+
